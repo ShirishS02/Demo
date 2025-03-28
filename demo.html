@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            width: 50%;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px gray;
+            margin: auto;
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #file-upload-container, #submit-verification-container {
+            display: none;
+            margin-top: 20px;
+        }
+        #success-message, #thank-you-message {
+            display: none;
+            color: green;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="main-container">
+        <h2>Player Verification</h2>
+        <form id="verification-form">
+            <label>Full Name:</label>
+            <input type="text" name="full_name" required>
+            
+            <label>Player ID:</label>
+            <input type="text" name="player_id" required>
+            
+            <label>Affiliated Club:</label>
+            <input type="text" name="affiliated_club" required>
+            
+            <label>Tournament Participation:</label>
+            <input type="text" name="tournament_participation" required>
+            
+            <label>Ranking:</label>
+            <input type="text" name="ranking" required>
+            
+            <label>Training History:</label>
+            <input type="text" name="training_history" required>
+            
+            <label>Coach Name:</label>
+            <input type="text" name="coach_name" required>
+            
+            <label>Certifications:</label>
+            <input type="text" name="certifications" required>
+            
+            <label>Doping Test:</label>
+            <select name="doping_test" required>
+                <option value="">Select</option>
+                <option value="Passed">Passed</option>
+                <option value="Failed">Failed</option>
+            </select>
+            
+            <label>Fitness Test Results:</label>
+            <input type="text" name="fitness_test_results" required>
+            
+            <label>International Participation:</label>
+            <input type="text" name="international_participation" required>
+            
+            <label>Performance Metrics:</label>
+            <input type="text" name="performance_metrics" required>
+            
+            <label>Medical Clearance:</label>
+            <input type="text" name="medical_clearance" required>
+            
+            <label>Psychological Assessment:</label>
+            <input type="text" name="psychological_assessment" required>
+            
+            <label>Sponsorships:</label>
+            <input type="text" name="sponsorships" required>
+            
+            <label>Background Verification:</label>
+            <input type="text" name="background_verification" required>
+            
+            <label>Status:</label>
+            <input type="text" name="status" required>
+            
+            <label>Verified by:</label>
+            <input type="text" name="verified_by" required>
+            
+            <label>Issuing Authority:</label>
+            <input type="text" name="issuing_authority" required>
+            
+            <label>Date of Verification:</label>
+            <input type="date" name="date_of_verification" required>
+            
+            <button type="button" onclick="validateForm()">Submit</button>
+        </form>
+        
+        <div id="file-upload-container">
+            <label>Upload File:</label>
+            <input type="file" id="file-upload">
+            <button onclick="uploadFile()">Upload</button>
+        </div>
+        
+        <p id="success-message">File uploaded successfully!</p>
+        
+        <div id="submit-verification-container">
+            <button onclick="submitForVerification()">Submit for Verification</button>
+        </div>
+    </div>
+    
+    <p id="thank-you-message">Thank You!</p>
+    
+    <script>
+        function validateForm() {
+            var form = document.getElementById('verification-form');
+            var isValid = true;
+            
+            for (var i = 0; i < form.elements.length; i++) {
+                if (form.elements[i].hasAttribute('required') && form.elements[i].value.trim() === '') {
+                    isValid = false;
+                    break;
+                }
+            }
+            
+            if (isValid) {
+                document.getElementById('file-upload-container').style.display = 'block';
+            } else {
+                alert('Please fill in all required fields before submitting.');
+            }
+        }
+        
+        function uploadFile() {
+            var fileInput = document.getElementById('file-upload');
+            if (fileInput.files.length > 0) {
+                document.getElementById('success-message').style.display = 'block';
+                document.getElementById('submit-verification-container').style.display = 'block';
+            } else {
+                alert('Please select a file to upload.');
+            }
+        }
+        
+        function submitForVerification() {
+            document.getElementById('main-container').style.display = 'none';
+            document.getElementById('thank-you-message').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
